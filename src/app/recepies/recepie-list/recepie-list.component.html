@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success">Add Recepie</button>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-xs-12">
+        <a href="#" class="list-group-item clearfix" *ngFor="let recepie of recepies">
+            <div class="pull-left">
+                <h4>{{recepie.recepie}}</h4>
+                <p>{{recepie.discription}}</p>
+            </div>
+            <span class="pull-right">
+                <img [src]="recepie.imagePath" alt="{{recepie.recepie}}" style="max-width: 100px;"
+                    class="img-responsive">
+            </span>
+        </a>
+    </div>
+</div>
