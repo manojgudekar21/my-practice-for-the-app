@@ -1,1 +1,9 @@
-<p>recepie-item works!</p>
+<a href="#" class="list-group-item clearfix" (click)="onSelected()">
+    <div class="pull-left">
+        <h4>{{recepie.recepie}}</h4>
+        <p>{{recepie.discription}}</p>
+    </div>
+    <span class="pull-right">
+        <img [src]="recepie.imagePath" alt="{{recepie.recepie}}" style="max-width: 100px;" class="img-responsive">
+    </span>
+</a>
