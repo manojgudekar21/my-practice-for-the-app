@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-md-5">
-        <app-recepie-list (recepieSelected)="SelectedRecepie($event)"></app-recepie-list>
+        <app-recepie-list></app-recepie-list>
     </div>
     <div class="col-md-7">
-        <app-recepie-details [recepie]="finalSelectedRecepie"></app-recepie-details>
+        <router-outlet></router-outlet>
+        <!-- <app-recepie-details></app-recepie-details> -->
     </div>
 </div>

@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { RecepieService } from '../recepies/recepie.service';
+import { Recepie } from '../shared/recepie.model';
+import { RecepieStorageService } from '../shared/recepieStorage.service';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +11,18 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() selectedOption = new EventEmitter<string>();
-  constructor() { }
+  constructor(private recepieStorageService: RecepieStorageService, private recepieService: RecepieService) { }
 
   ngOnInit(): void {
   }
 
-  SelectedOption(name: string) {
-    this.selectedOption.emit(name)
+  onSaveData() {
+    this.recepieStorageService.onSave()
   }
+
+  onFetchData() {
+    this.recepieStorageService.onFetch().subscribe()
+  }
+
 
 }

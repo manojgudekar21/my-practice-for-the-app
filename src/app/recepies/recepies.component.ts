@@ -8,15 +8,10 @@ import { Recepie } from '../shared/recepie.model';
 })
 export class RecepiesComponent implements OnInit {
 
-  finalSelectedRecepie!: Recepie;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  SelectedRecepie(recepie: Recepie) {
-    this.finalSelectedRecepie = recepie;
   }
 
 }

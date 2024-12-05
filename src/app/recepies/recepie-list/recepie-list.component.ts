@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Recepie } from 'src/app/shared/recepie.model';
+import { RecepieService } from '../recepie.service';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recepie-list',
@@ -8,20 +10,19 @@ import { Recepie } from 'src/app/shared/recepie.model';
 })
 export class RecepieListComponent implements OnInit {
 
-  @Output() recepieSelected = new EventEmitter<Recepie>();
-
-  constructor() { }
+  constructor(private recepieService: RecepieService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.recepies = this.recepieService.getRecepies();
+    this.recepieService.updatedRecepies.subscribe((recepies: Recepie[]) => {
+      this.recepies = recepies;
+    })
   }
 
-  recepies: Recepie[] = [
-    new Recepie("chicken curry", "its so delecious", "https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Instant-Pot-Chicken-Curry-Recipe.jpg"),
-    new Recepie("mutton curry", "its so awesome", "https://i0.wp.com/www.bharatzkitchen.com/wp-content/uploads/2018/11/mutton-curry-thumb.jpg?fit=800%2C450&ssl=1")
-  ]
+  recepies: Recepie[] = [];
 
-  recepieWasSelected(recepie: Recepie) {
-    this.recepieSelected.emit(recepie);
+  toNewRecepie() {
+    this.router.navigate(['new'], { relativeTo: this.route })
   }
 
 

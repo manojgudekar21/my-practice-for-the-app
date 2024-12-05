@@ -8,17 +8,13 @@ import { Recepie } from 'src/app/shared/recepie.model';
 })
 export class RecepieItemComponent implements OnInit {
 
-
   @Input() recepie!: Recepie;
-  @Output() recepieSelected = new EventEmitter<void>();
+  @Input() index!: number;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSelected() {
-    this.recepieSelected.emit();
-  }
 
 }
